@@ -1,5 +1,5 @@
-import { NodeTypes } from "../types/element-states";
-import { randomLinkedList } from "../utils/randomLinkedList";
+import { NodeTypes } from "../../types/element-states";
+import { randomLinkedList } from "./utils";
 
 
 class ListNode<T> implements NodeTypes<T> {
@@ -184,4 +184,4 @@ class LinkedList<T> implements ILinkedList<T> {
   }
 }
 
-export const linkedList = new LinkedList<string>(randomLinkedList());
+export const linkedList = new LinkedList<string>(randomLinkedList(4, 4));

@@ -1,7 +1,5 @@
-export const randomLinkedList = () => {
+export const randomLinkedList = (maxsize: number, minsize: number) => {
 
-  const maxsize = 4;
-  const minsize = 4;
   const size = Math.floor(Math.random() * (maxsize - minsize + 1)) + minsize;
   const arr: string[] = [];
 

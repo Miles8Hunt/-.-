@@ -12,7 +12,8 @@ import { useForm } from "../../utils/hooks/useForm";
 import { setDelay } from "../../utils/setDelay";
 import { SHORT_DELAY_IN_MS } from "../../constants/delays";
 import { TAIL, HEAD } from "../../constants/element-captions";
-import { linkedList } from "../../utils/LinkedList";
+import { linkedList } from "./LinkedList";
+import { INPUT_LENGTH  } from "../../constants/InputLength";
 
 
 export const ListPage: FC = () => {
@@ -141,6 +142,7 @@ export const ListPage: FC = () => {
     await setDelay(SHORT_DELAY_IN_MS);
     setArray([...linkedList.getArray()]);
     setCircleState({ ...circleState, changingIndex: -1 });
+    setCircleIndex(-1);
     setValues({ value: '', index: '' });
 
     setLoader({ ...loader, deleteIndex: false, disabled: false });
@@ -188,7 +190,7 @@ export const ListPage: FC = () => {
             name="value"
             type="text"
             extraClass={style.input}
-            maxLength={4}
+            maxLength={INPUT_LENGTH}
             isLimitText={true}
             value={values.value}
             onChange={onChange}
@@ -239,8 +241,13 @@ export const ListPage: FC = () => {
             type="button"
             extraClass={style.button}
             onClick={addIndex}
-            disabled={!values.index || loader.disabled || Number(values.index) > array.length - 1}
             isLoader={loader.addIndex}
+            disabled={ 
+              !!!(values.index && values.value) ||
+              loader.disabled ||
+              Number(values.index) > array.length - 1 ||
+              Number(values.index) < 0
+            }
           />
           <Button
             text="Удалить по индексу"

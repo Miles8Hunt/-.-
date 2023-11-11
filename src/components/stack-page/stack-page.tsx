@@ -10,7 +10,8 @@ import { ElementStates } from "../../types/element-states";
 import { useForm } from "../../utils/hooks/useForm";
 import { setDelay } from "../../utils/setDelay";
 import { SHORT_DELAY_IN_MS } from "../../constants/delays";
-import { stack } from "../../utils/Stack";
+import { INPUT_LENGTH } from "../../constants/InputLength";
+import { stack } from "./Stack";
 
 
 export const StackPage: FC = () => {
@@ -61,7 +62,7 @@ export const StackPage: FC = () => {
       <form className={style.form} onSubmit={(e: FormEvent<HTMLFormElement>) => e.preventDefault()}>
         <Input 
           name='stack'
-          maxLength={4}
+          maxLength={INPUT_LENGTH}
           value={values.stack}
           onChange={onChange}
           isLimitText={true} 

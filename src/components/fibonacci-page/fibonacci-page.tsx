@@ -9,13 +9,14 @@ import { Circle } from "../ui/circle/circle";
 import { useForm } from "../../utils/hooks/useForm";
 import { setDelay } from "../../utils/setDelay";
 import { SHORT_DELAY_IN_MS } from "../../constants/delays";
-import { fibonacci } from "../../utils/fibonacci";
+import { INPUT_MAX, INPUT_MIN } from "../../constants/InputLength";
+import { getFibonacciNumbers } from "./utils"; 
 
 
 export const FibonacciPage: FC = () => {
 
   const [ array, setArray ] = useState<Array<number>>();
-  const { values, onChange } = useForm({ fibNum: '' as string });
+  const { values, onChange } = useForm({ fibNum: '' });
   const [ loader, setLoader ] = useState(false);
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -23,7 +24,7 @@ export const FibonacciPage: FC = () => {
 
     setLoader(true);
 
-    const data = fibonacci(Number(values.fibNum));
+    const data = getFibonacciNumbers(Number(values.fibNum));
 
     for (let i = 0; i < data.length; i++) {
       await setDelay(SHORT_DELAY_IN_MS);
@@ -41,8 +42,8 @@ export const FibonacciPage: FC = () => {
           name="fibNum" 
           type="number" 
           isLimitText
-          max={19}
-          min={1}
+          max={INPUT_MAX}
+          min={INPUT_MIN}
           value={values.fibNum} 
           onChange={onChange}
         />
@@ -50,7 +51,7 @@ export const FibonacciPage: FC = () => {
           text="Рассчитать"
           type="submit"
           isLoader={loader}
-          disabled={ !values.fibNum || Number(values.fibNum) > 19 }
+          disabled={ !values.fibNum || Number(values.fibNum) > INPUT_MAX }
         />
       </form>
       <ul className={style.list}>

@@ -11,7 +11,8 @@ import { useForm } from "../../utils/hooks/useForm";
 import { setDelay } from "../../utils/setDelay";
 import { SHORT_DELAY_IN_MS } from "../../constants/delays";
 import { TAIL, HEAD } from "../../constants/element-captions";
-import { queue } from "../../utils/Queue";
+import { INPUT_LENGTH  } from "../../constants/InputLength";
+import { queue } from "./Queue";
 
 
 export const QueuePage: FC = () => {
@@ -62,7 +63,7 @@ export const QueuePage: FC = () => {
         <fieldset className={style.fieldset} >
           <Input
             name='queue'
-            maxLength={4}
+            maxLength={INPUT_LENGTH}
             isLimitText={true}
             value={values.queue}
             disabled={queue.isFull()}

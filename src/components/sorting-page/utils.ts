@@ -1,4 +1,4 @@
-import { ElementStates, SortingTypes } from "../types/element-states";
+import { ElementStates, SortingTypes } from "../../types/element-states";
 
 
 export const randomArray = () => {

@@ -11,6 +11,7 @@ import { useForm } from "../../utils/hooks/useForm";
 import { setDelay } from "../../utils/setDelay";
 import { DELAY_IN_MS } from "../../constants/delays";
 import { swap } from "../../utils/swap";
+import { INPUT_LENGTH_AS_STRING } from "../../constants/InputLength";
 
 
 export const StringComponent: FC = () => {
@@ -62,7 +63,7 @@ export const StringComponent: FC = () => {
           name="symbol"
           type="text"
           isLimitText
-          maxLength={11}
+          maxLength={INPUT_LENGTH_AS_STRING}
           value={values.symbol}
           onChange={onChange}
         />
@@ -70,7 +71,7 @@ export const StringComponent: FC = () => {
           text="Развернуть"
           type="submit"
           isLoader={loader}
-          disabled={ !values.symbol || values.symbol.length > 11 }
+          disabled={ !values.symbol || values.symbol.length > INPUT_LENGTH_AS_STRING }
         />
       </form>
       <ul className={style.list}>
