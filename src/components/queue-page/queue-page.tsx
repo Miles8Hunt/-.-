@@ -14,12 +14,14 @@ import { TAIL, HEAD } from "../../constants/element-captions";
 import { INPUT_LENGTH  } from "../../constants/InputLength";
 import { queue } from "./Queue";
 
+import { validate } from "../../utils/validate";
+
 
 export const QueuePage: FC = () => {
 
   const [ array, setArray ] = useState<string[]>(queue.getArray());
   const [ currentIndex, setCurrentIndex ] = useState<number | null>(null);
-  const { values, onChange, setValues } = useForm({ queue: '' });
+  const { values, onChange, setValues } = useForm({ value: '' });
   const [ loader, setLoader ] = useState({ add: false, delete: false, clear: false });
 
   const addElement = async () => {
@@ -27,9 +29,9 @@ export const QueuePage: FC = () => {
 
     setCurrentIndex(queue.getTail());
     await setDelay(SHORT_DELAY_IN_MS);
-    queue.enqueue(values.queue);
+    queue.enqueue(values.value);
     setArray([...queue.getArray()]);
-    setValues({ ...values, queue: '' });
+    setValues({ ...values, value: '' });
     setCurrentIndex(null);
 
     setLoader({ ...loader, add: false });
@@ -57,15 +59,18 @@ export const QueuePage: FC = () => {
     setLoader({ ...loader, clear: false });
   };
 
+  validate(values)
+
+
   return (
     <SolutionLayout title="Очередь">
       <form className={style.form} onSubmit={(e: FormEvent<HTMLFormElement>) => e.preventDefault()}>
         <fieldset className={style.fieldset} >
           <Input
-            name='queue'
+            name='value'
             maxLength={INPUT_LENGTH}
             isLimitText={true}
-            value={values.queue}
+            value={values.value}
             disabled={queue.isFull()}
             onChange={onChange}
           />
@@ -74,14 +79,14 @@ export const QueuePage: FC = () => {
             type='button' 
             onClick={addElement} 
             isLoader={loader.add} 
-            disabled={loader.delete || !values.queue} 
+            disabled={loader.delete || loader.clear || !values.value} 
           />
           <Button 
             text="Удалить" 
             type='button' 
             onClick={deleteElement} 
             isLoader={loader.delete} 
-            disabled={loader.add || queue.isEmpty()} 
+            disabled={loader.add || loader.clear || queue.isEmpty()} 
           />
         </fieldset>
         <Button 
@@ -90,7 +95,7 @@ export const QueuePage: FC = () => {
           extraClass={style.reset} 
           onClick={clearElements} 
           isLoader={loader.clear} 
-          disabled={queue.isEmpty()} 
+          disabled={loader.add || loader.delete || queue.isEmpty()} 
         />
       </form>
       <ul className={style.list}>

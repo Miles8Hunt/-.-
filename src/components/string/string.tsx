@@ -13,17 +13,19 @@ import { DELAY_IN_MS } from "../../constants/delays";
 import { swap } from "../../utils/swap";
 import { INPUT_LENGTH_AS_STRING } from "../../constants/InputLength";
 
+import { validate } from "../../utils/validate";
+
 
 export const StringComponent: FC = () => {
 
   const [ array, setArray ] = useState<Array<ElementTypes>>();
-  const { values, onChange } = useForm({ symbol: '' });
+  const { values, onChange } = useForm({ value: '' });
   const [ loader, setLoader ] = useState(false);
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const stringArray = values.symbol.split('').map((letter: string) => {
+    const stringArray = values.value.split('').map((letter: string) => {
       return { letter, state: ElementStates.Default };
     });
 
@@ -54,24 +56,26 @@ export const StringComponent: FC = () => {
 
     setLoader(false);
   };
+
+  validate(values)
   
 
   return (
     <SolutionLayout title="Строка">
       <form className={style.form} onSubmit={onSubmit}>
         <Input
-          name="symbol"
+          name="value"
           type="text"
           isLimitText
           maxLength={INPUT_LENGTH_AS_STRING}
-          value={values.symbol}
+          value={values.value}
           onChange={onChange}
         />
         <Button
           text="Развернуть"
           type="submit"
           isLoader={loader}
-          disabled={ !values.symbol || values.symbol.length > INPUT_LENGTH_AS_STRING }
+          disabled={ !values.value || values.value.length > INPUT_LENGTH_AS_STRING }
         />
       </form>
       <ul className={style.list}>

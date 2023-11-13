@@ -15,6 +15,8 @@ import { TAIL, HEAD } from "../../constants/element-captions";
 import { linkedList } from "./LinkedList";
 import { INPUT_LENGTH  } from "../../constants/InputLength";
 
+import { validate } from "../../utils/validate";
+
 
 export const ListPage: FC = () => {
 
@@ -180,6 +182,8 @@ export const ListPage: FC = () => {
     }
   };
 
+  validate(values)
+
 
   return (
     <SolutionLayout title="Связный список">
@@ -194,6 +198,7 @@ export const ListPage: FC = () => {
             isLimitText={true}
             value={values.value}
             onChange={onChange}
+            required
           />
           <Button
             text="Добавить в head"
@@ -235,6 +240,7 @@ export const ListPage: FC = () => {
             extraClass={style.input} 
             value={values.index} 
             onChange={onChange} 
+            required
           />
           <Button
             text="Добавить по индексу"
