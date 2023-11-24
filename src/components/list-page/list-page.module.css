@@ -1,0 +1,42 @@
+.form {
+  margin-bottom: 90px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.fieldset {
+  margin: 0 auto;
+  width: 952px;
+  display: flex;
+  gap: 12px;
+  border: none;
+}
+
+.input {
+  max-width: 204px;
+}
+
+.smallButton {
+  width: 175px;
+}
+
+.button {
+  width: 362px;
+}
+
+.list {
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  list-style: none;
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  gap: 21px;
+}

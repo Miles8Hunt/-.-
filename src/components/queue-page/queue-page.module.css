@@ -1,0 +1,30 @@
+.form {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.fieldset {
+  margin: 0;
+  padding: 0;
+  width: 630px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  border: none;
+}
+
+.reset {
+  margin-left: 68px;
+}
+
+.list {
+  margin: 48px auto 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  list-style: none;
+}

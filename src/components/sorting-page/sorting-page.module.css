@@ -1,0 +1,36 @@
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 48px;
+}
+
+.fieldset {
+  border: none;
+  display: flex;
+  flex-direction: row;
+}
+.radioInput {
+  gap: 40px;
+}
+
+.buttons {
+  margin: 0 80px 0 52px;
+  gap: 12px;
+}
+
+.button {
+  width: 205px;
+}
+
+.list {
+  margin: 0 auto;
+  padding: 0;
+  height: 340px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 16px;
+  list-style: none;
+}
