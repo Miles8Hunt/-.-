@@ -75,6 +75,7 @@ export const StackPage: FC = () => {
         <Button 
           text='Добавить' 
           type='submit' 
+          data='add-button'
           onClick={addElement} 
           isLoader={loader.add} 
           disabled={loader.delete || loader.clear || !values.value} 
@@ -82,6 +83,7 @@ export const StackPage: FC = () => {
         <Button 
           text='Удалить' 
           type='button'
+          data='delete-button'
           onClick={deleteElement} 
           isLoader={loader.delete} 
           disabled={loader.add || loader.clear || indexTop === 0}
@@ -89,6 +91,7 @@ export const StackPage: FC = () => {
         <Button 
           text='Очистить' 
           type='reset' 
+          data='clear-button'
           extraClass={style.reset} 
           onClick={clearElements}
           isLoader={loader.clear} 

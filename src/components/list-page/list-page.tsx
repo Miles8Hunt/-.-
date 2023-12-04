@@ -193,6 +193,7 @@ export const ListPage: FC = () => {
             placeholder="Введите значение"
             name="value"
             type="text"
+            data="input-value"
             extraClass={style.input}
             maxLength={INPUT_LENGTH}
             isLimitText={true}
@@ -203,6 +204,7 @@ export const ListPage: FC = () => {
           <Button
             text="Добавить в head"
             type="button"
+            data="add-at-head-button"
             extraClass={style.smallButton}
             onClick={addHead}
             isLoader={loader.addHead}
@@ -211,13 +213,16 @@ export const ListPage: FC = () => {
           <Button
             text="Добавить в tail"
             type="button"
+            data="add-at-tail-button"
             extraClass={style.smallButton}
             onClick={addTail}
             isLoader={loader.addTail}
             disabled={!values.value || loader.disabled}
           />
           <Button
-            text="Удалить из head" type="button"
+            text="Удалить из head" 
+            type="button"
+            data="delete-at-head-button"
             extraClass={style.smallButton}
             onClick={deleteHead}
             isLoader={loader.deleteHead}
@@ -226,6 +231,7 @@ export const ListPage: FC = () => {
           <Button
             text="Удалить из tail"
             type="button"
+            data="delete-at-tail-button"
             extraClass={style.smallButton}
             onClick={deleteTail}
             isLoader={loader.deleteTail}
@@ -236,7 +242,8 @@ export const ListPage: FC = () => {
           <Input 
             placeholder="Введите индекс"  
             name="index" 
-            type="number"          
+            type="number" 
+            data="index-value"         
             extraClass={style.input} 
             value={values.index} 
             onChange={onChange} 
@@ -245,6 +252,7 @@ export const ListPage: FC = () => {
           <Button
             text="Добавить по индексу"
             type="button"
+            data="add-at-index-button"
             extraClass={style.button}
             onClick={addIndex}
             isLoader={loader.addIndex}
@@ -258,6 +266,7 @@ export const ListPage: FC = () => {
           <Button
             text="Удалить по индексу"
             type="button"
+            data="delete-at-index-button"
             extraClass={style.button}
             onClick={deleteIndex}
             disabled={!values.index || loader.disabled || Number(values.index) > array.length - 1}
