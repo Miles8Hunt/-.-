@@ -1,3 +1,11 @@
+export const baseUrl = 'http://localhost:3000'; 
+export const recursionUrl = baseUrl + '/recursion'; 
+export const fibonacciUrl = baseUrl + '/fibonacci'; 
+export const sortingUrl = baseUrl + '/sorting';
+export const stackUrl = baseUrl + '/stack';
+export const queueUrl = baseUrl + '/queue';
+export const listUrl = baseUrl + '/list';
+
 export const input = 'input';
 
 export const circle = '[class^="circle_circle"]';

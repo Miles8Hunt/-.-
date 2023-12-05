@@ -1,4 +1,4 @@
-import { inputValue, indexValue, circle, circleSmall, circleItem,
+import { listUrl, inputValue, indexValue, circle, circleSmall, circleItem,
          defaultState, changingState, modifiedState,
          addAtHeadButton, addAtTailButton, addAtIndexButton,
          deleteAtHeadButton, deleteAtTailButton, deleteAtIndexButton,
@@ -19,7 +19,7 @@ const getCirclesData = (array) => {
 
 describe("Проверка визуализации алгоритма 'Связанный список'", () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/list');
+    cy.visit(listUrl);
   });
 
   it("Начальное состояние страницы отрисовано корректно", () => {

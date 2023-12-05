@@ -1,4 +1,4 @@
-import { input, circle, circleItem, changingState, defaultState, addButton, deleteButton, clearButton } from "../constants";
+import { stackUrl, input, circle, circleItem, changingState, defaultState, addButton, deleteButton, clearButton } from "../constants";
 import { SHORT_DELAY_IN_MS } from "../../src/constants/delays";
 
 
@@ -16,7 +16,7 @@ const pushItem = (val) => {
 
 describe("Проверка визуализации алгоритма 'Стек'", () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/stack');
+    cy.visit(stackUrl);
   });
 
   it("Начальное состояние страницы отрисовано корректно", () => {

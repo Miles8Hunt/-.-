@@ -1,10 +1,10 @@
-import { input, circle } from "../constants";
+import { fibonacciUrl, input, circle } from "../constants";
 import { SHORT_DELAY_IN_MS } from "../../src/constants/delays";
 
 
 describe("Проверка визуализации алгоритма 'Последовательность Фибоначчи'", () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/fibonacci');
+    cy.visit(fibonacciUrl);
   });
 
   it("Начальное состояние страницы отрисовано корректно", () => {

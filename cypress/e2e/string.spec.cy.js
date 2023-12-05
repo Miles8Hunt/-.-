@@ -1,10 +1,10 @@
-import { input, circle, modifiedState, defaultState, changingState } from "../constants";
+import { recursionUrl, input, circle, modifiedState, defaultState, changingState } from "../constants";
 import { DELAY_IN_MS } from "../../src/constants/delays";
 
 
 describe("Проверка визуализации алгоритма 'Строка'", () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/recursion');
+    cy.visit(recursionUrl);
   });
 
   it("Начальное состояние страницы отрисовано корректно", () => {

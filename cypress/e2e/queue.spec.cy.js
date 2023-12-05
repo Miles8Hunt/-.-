@@ -1,4 +1,4 @@
-import { input, circle, circleItem, changingState, defaultState, addButton, deleteButton, clearButton } from "../constants";
+import { queueUrl, input, circle, circleItem, changingState, defaultState, addButton, deleteButton, clearButton } from "../constants";
 import { DELAY_IN_MS, SHORT_DELAY_IN_MS } from "../../src/constants/delays";
 
 
@@ -16,7 +16,7 @@ const pushItem = (val) => {
 
 describe("Проверка визуализации алгоритма 'очередь'", () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/queue');
+    cy.visit(queueUrl);
   });
 
   it("Начальное состояние страницы отрисовано корректно", () => {
