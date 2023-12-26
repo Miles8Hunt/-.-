@@ -1,5 +1,5 @@
 import style from './queue-page.module.css';
-import { FC, FormEvent, useState } from "react";
+import { FC, FormEvent, useState, useEffect } from "react";
 
 import { SolutionLayout } from "../ui/solution-layout/solution-layout";
 import { Input } from "../ui/input/input";
@@ -23,6 +23,10 @@ export const QueuePage: FC = () => {
   const [ currentIndex, setCurrentIndex ] = useState<number | null>(null);
   const { values, onChange, setValues } = useForm({ value: '' });
   const [ loader, setLoader ] = useState({ add: false, delete: false, clear: false });
+
+  useEffect(() => {
+    setArray(queue.getArray().fill(''));
+  }, []);
 
   const addElement = async () => {
     setLoader({ ...loader, add: true });
@@ -77,6 +81,7 @@ export const QueuePage: FC = () => {
           <Button 
             text="Добавить" 
             type='button' 
+            data="add-button"
             onClick={addElement} 
             isLoader={loader.add} 
             disabled={loader.delete || loader.clear || !values.value} 
@@ -84,6 +89,7 @@ export const QueuePage: FC = () => {
           <Button 
             text="Удалить" 
             type='button' 
+            data="delete-button"
             onClick={deleteElement} 
             isLoader={loader.delete} 
             disabled={loader.add || loader.clear || queue.isEmpty()} 
@@ -92,6 +98,7 @@ export const QueuePage: FC = () => {
         <Button 
           text="Очистить" 
           type='button' 
+          data="clear-button"
           extraClass={style.reset} 
           onClick={clearElements} 
           isLoader={loader.clear} 

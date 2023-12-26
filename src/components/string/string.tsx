@@ -19,7 +19,7 @@ import { validate } from "../../utils/validate";
 export const StringComponent: FC = () => {
 
   const [ array, setArray ] = useState<Array<ElementTypes>>();
-  const { values, onChange } = useForm({ value: '' });
+  const { values, setValues, onChange } = useForm({ value: '' });
   const [ loader, setLoader ] = useState(false);
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -54,6 +54,7 @@ export const StringComponent: FC = () => {
       setArray([...stringArray]);
     }
 
+    setValues({ value: '' });
     setLoader(false);
   };
 

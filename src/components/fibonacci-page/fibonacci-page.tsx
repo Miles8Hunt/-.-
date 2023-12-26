@@ -16,7 +16,7 @@ import { getFibonacciNumbers } from "./utils";
 export const FibonacciPage: FC = () => {
 
   const [ array, setArray ] = useState<Array<number>>();
-  const { values, onChange } = useForm({ fibNum: '' });
+  const { values, setValues, onChange } = useForm({ fibNum: '' });
   const [ loader, setLoader ] = useState(false);
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -31,6 +31,7 @@ export const FibonacciPage: FC = () => {
       setArray(data.slice(0, i + 1));
     }
 
+    setValues({ fibNum: '' });
     setLoader(false);
   };
   
